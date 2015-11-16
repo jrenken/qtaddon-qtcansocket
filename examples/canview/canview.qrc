@@ -1,0 +1,12 @@
+<RCC>
+  <qresource prefix="images">
+    <file alias="new.png">images/newmsg.png</file>
+    <file alias="logo.png">images/logo.png</file>
+    <file alias="disconnect.png">images/network-disconnect.png</file>
+    <file alias="connect.png">images/network-connect.png</file>
+    <file alias="exit.png">images/exit.png</file>
+    <file alias="open.png">images/fileopen.png</file>
+    <file alias="save.png">images/filesave.png</file>
+    <file alias="clear.png">images/clear.png</file>
+  </qresource>
+</RCC>
