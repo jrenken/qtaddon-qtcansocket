@@ -437,6 +437,11 @@ QCanSocket::~QCanSocket()
 	delete d;
 }
 
+/*!
+    Bind to a socketcan interface.
+    Return \c true if connection can be established otherwise returns \c false.
+*/
+
 bool QCanSocket::bind(const QString& interface, QIODevice::OpenMode mode)
 {
 	if (d->bind(interface)) {
@@ -446,52 +451,95 @@ bool QCanSocket::bind(const QString& interface, QIODevice::OpenMode mode)
 	return false;
 }
 
+/*!
+ *  \overload
+ *  Does nothing and returns always \c false
+ */
 bool QCanSocket::open(QIODevice::OpenMode)
 {
 	Q_ASSERT_X(false, "open", "Use bind to open Can device");
 	return false;
 }
 
+/*!
+ *  \overload
+ *  Closes the socket
+ */
 void QCanSocket::close()
 {
 	d->close();
 	QIODevice::close();
 }
+
+/*!
+ * Read a message from the socket. The message will be placed in \a frame.
+ * \a time contains the time stamp
+ * Return \c true if a message could be read, otherwise returns false
+ */
+
 bool QCanSocket::readMessage(struct can_frame *frame, qint64 *time)
 {
 	return d->readMessage(frame, time);
 }
+
+/*!
+ * \overload
+ */
 
 qint64 QCanSocket::readData(char *data, qint64 maxlen)
 {
 	return d->readData(data, maxlen);
 }
 
+/*!
+ * \overload
+ */
+
 qint64 QCanSocket::readLineData(char *data, qint64 maxlen)
 {
 	return d->readLineData(data, maxlen);
 }
+
+/*!
+ * \overload
+ */
 
 qint64 QCanSocket::writeData(const char *data, qint64 len)
 {
 	return d->writeData(data, len);
 }
 
+/*!
+ * \overload
+ */
+
 QStringList QCanSocket::canInterfaces()
 {
 	return QCanSocketPrivate::canInterfaces();
 }
+
+/*!
+ *  Filter messages with \a filter.
+ *  \a filter.first is the can_id, \a filter.second the can_mask.
+ *  Only messages where (id & can_mask) == can_id are accepted.
+ */
 
 void QCanSocket::setMessageFilter(const QPair<quint32, quint32>& filter)
 {
 	d->setMessageFilter(filter);
 }
 
+/*!
+ * Filter error messages
+ */
 void QCanSocket::setErrorFilter(quint32 filter)
 {
 	d->setErrorFilter(filter);
 }
 
+/*!
+ * Returns the last error frame
+ */
 can_frame QCanSocket::lastErrorFrame() const
 {
 	return d->mErrorFrame;
