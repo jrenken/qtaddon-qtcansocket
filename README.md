@@ -7,7 +7,7 @@ The class QCanSocket inherits QIODevice.
 ## Features
 
 This library offers a simple way to access the SocketCan network interface.
-A simple example application aloow to send and receive can messages
+A simple example application allows to send and receive can messages
 
 ## Installation
 
@@ -16,12 +16,7 @@ A simple example application aloow to send and receive can messages
 * Clone the repository
 * Execute qmake, make and make install 
 
-### via repo server
-
-* Go to plugin manager and install PosiView
-
-
 
 ## License
 
-GPLv2
+[GPLv2](/LICENSE)
