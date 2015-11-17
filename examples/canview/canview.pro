@@ -25,10 +25,13 @@ LIBS += -L../../lib \
 RESOURCES += 
 RESOURCES = canview.qrc
 INCLUDEPATH += ../../src/cansocket
-QMAKE_RPATHDIR += ../../lib
 OBJECTS_DIR = ../../obj
 DESTDIR = ../../bin
 MOC_DIR = ../../moc
+
+QMAKE_RPATHDIR += $$OUT_PWD/../../lib
+message($$QMAKE_RPATHDIR)
+
 unix { 
     target.path = /usr/local/bin
     INSTALLS += target
@@ -36,4 +39,4 @@ unix {
 GITHASH = $$system(git log -1 --pretty=format:"%h")
 DEFINES += GITHASH=$$GITHASH
 
-QMAKE_CLEAN += -r $$DESTDIR 
+QMAKE_CLEAN += -r $$DESTDIR $$OBJECTS_DIR $$MOC_DIR
