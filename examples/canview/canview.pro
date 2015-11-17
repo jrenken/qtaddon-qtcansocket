@@ -30,7 +30,6 @@ DESTDIR = ../../bin
 MOC_DIR = ../../moc
 
 QMAKE_RPATHDIR += $$OUT_PWD/../../lib
-message($$QMAKE_RPATHDIR)
 
 unix { 
     target.path = /usr/local/bin
