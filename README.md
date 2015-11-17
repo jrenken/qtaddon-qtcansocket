@@ -7,7 +7,7 @@ The class QCanSocket inherits QIODevice.
 ## Features
 
 This library offers a simple way to access the SocketCan network interface.
-A simple example application allows to send and receive can messages
+An example application allows to send and receive can messages.
 
 ## Installation
 

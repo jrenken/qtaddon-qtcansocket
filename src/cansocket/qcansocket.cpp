@@ -8,6 +8,16 @@
  *  $Id: cansocket.cpp 76 2013-05-30 09:16:09Z jrenken $
  */
 
+/*!
+    \class QCanSocket
+    \brief The QCanSocket class provides access to SocketCan socket.
+    \reentrant
+    \ingroup network
+    \inmodule QtAddOn
+    SocketCan  is a set of open source CAN drivers and a networking
+    stack contributed by Volkswagen Research to the Linux kernel.
+*/
+
 #include <sys/ioctl.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -401,11 +411,12 @@ void QCanSocketPrivate::setErrorFilter(quint32 filter)
 	               &err_mask, sizeof(err_mask));
 }
 
-//! class
 /*!
+    Creates a QCanSocket object in state \c UnconnectedState.
+    \a parent is passed on to the QObject constructor.
+    \sa socketType()
 *
-*
-*	@author Jens Renken <renken@marum.de>
+*   @author Jens Renken <renken@marum.de>
 */
 
 QCanSocket::QCanSocket(QObject *parent)
@@ -415,6 +426,11 @@ QCanSocket::QCanSocket(QObject *parent)
 	// TODO Auto-generated constructor stub
 
 }
+
+/*!
+    Destroys the socket, closing the connection if necessary.
+    \sa close()
+*/
 
 QCanSocket::~QCanSocket()
 {
